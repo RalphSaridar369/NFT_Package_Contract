@@ -13,7 +13,7 @@
     to the best of the developers' knowledge to work as intended.
 */
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity 0.8.11;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -23,10 +23,10 @@ contract NFT is ERC721Enumerable, Ownable {
 
   string baseURI;
   string public baseExtension = ".json";
-  uint256 public cost = 0.05 ether;
-  uint256 public maxSupply = 10000;
-  uint256 public maxMintAmount = 20;
-  bool public paused = false;
+  uint256 public cost = 2 ether;
+  uint256 public maxSupply = 25;
+  uint256 public maxMintAmount = 2;
+  bool public paused = true;
   bool public revealed = false;
   string public notRevealedUri;
 
@@ -130,8 +130,8 @@ contract NFT is ERC721Enumerable, Ownable {
     // This will pay HashLips 5% of the initial sale.
     // You can remove this if you want, or keep it in to support HashLips and his channel.
     // =============================================================================
-    (bool hs, ) = payable(0x943590A42C27D08e3744202c4Ae5eD55c2dE240D).call{value: address(this).balance * 5 / 100}("");
-    require(hs);
+    // (bool hs, ) = payable(0x943590A42C27D08e3744202c4Ae5eD55c2dE240D).call{value: address(this).balance * 5 / 100}("");
+    // require(hs);
     // =============================================================================
     
     // This will payout the owner 95% of the contract balance.
